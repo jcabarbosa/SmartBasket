@@ -1,0 +1,56 @@
+services:
+  # Base de dados para persistência (Load)
+  postgres:
+    image: postgres:16-alpine
+    container_name: smartbasket-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: isi_joao
+      POSTGRES_PASSWORD: isi_j040
+      POSTGRES_DB: smartbasket_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # Mock API REST e Streaming contínuo
+  nodered:
+    image: nodered/node-red:latest
+    container_name: smartbasket-nodered
+    restart: always
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered_data:/data
+
+  # Servidor FTP para simular catálogo remoto (CSV)
+  ftpserver:
+    image: delfer/alpine-ftp-server:latest
+    container_name: smartbasket-ftp
+    restart: always
+    environment:
+      USERS: "isi_ftp|isi_pass|/home/isi_ftp"
+    ports:
+      - "21:21"
+      - "21000-21010:21000-21010"
+    volumes:
+      - ./data/ftp_input:/home/isi_ftp
+
+  # Dashboards de Monitorização dos Preços
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: smartbasket-grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "isi_j040"
+    depends_on:
+      - postgres
+    volumes:
+      - grafanadata:/var/lib/grafana
+
+volumes:
+  pgdata:
+  nodered_data:
+  grafanadata:

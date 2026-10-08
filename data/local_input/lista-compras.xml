@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<compras>
+    <item>
+        <id>P001</id>
+        <designacao>Arroz Agulha (Embalagem 1kg)</designacao>
+        <categoria>Mercearia</categoria>
+        <quantidade>2</quantidade>
+    </item>
+    <item>
+        <id>P002</id>
+        <designacao>Leite Meio Gordo - Pack 1L</designacao>
+        <categoria>Lacticinios</categoria>
+        <quantidade>6</quantidade>
+    </item>
+    <item>
+        <id>P003</id>
+        <designacao>Massa Esparguete 500g</designacao>
+        <categoria>Mercearia</categoria>
+        <quantidade>3</quantidade>
+    </item>
+    <item>
+        <id>P004</id>
+        <designacao>Azeite Virgem Extra [750ml]</designacao>
+        <categoria>Mercearia</categoria>
+        <quantidade>1</quantidade>
+    </item>
+    <item>
+        <id>P005</id>
+        <designacao>Cafe Soluvel 200g - Descontinuado</designacao>
+        <categoria>Mercearia</categoria>
+        <quantidade>1</quantidade>
+    </item>
+</compras>
